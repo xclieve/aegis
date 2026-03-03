@@ -1,6 +1,9 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token_2022::{self, Token2022};
-use anchor_spl::token_interface::{Mint, TokenAccount, TokenInterface};
+use anchor_spl::token_2022;
+use anchor_spl::token_interface::{
+    Mint, TokenAccount, TokenInterface,
+    withdraw_withheld_tokens_from_mint, WithdrawWithheldTokensFromMint,
+};
 
 declare_id!("FeeD1str1butr111111111111111111111111111111");
 
@@ -55,7 +58,8 @@ pub mod fee_distributor {
         let signer = &[&seeds[..]];
 
         // CPI to withdraw withheld tokens from mint
-        let cpi_accounts = token_2022::WithdrawWithheldTokensFromMint {
+        let cpi_accounts = WithdrawWithheldTokensFromMint {
+            token_program_id: ctx.accounts.token_program.to_account_info(),
             mint: ctx.accounts.mint.to_account_info(),
             destination: ctx.accounts.fee_vault.to_account_info(),
             authority: ctx.accounts.state.to_account_info(),
@@ -65,7 +69,7 @@ pub mod fee_distributor {
             cpi_accounts,
             signer,
         );
-        token_2022::withdraw_withheld_tokens_from_mint(cpi_ctx)?;
+        withdraw_withheld_tokens_from_mint(cpi_ctx)?;
 
         // Calculate amount harvested
         ctx.accounts.fee_vault.reload()?;
