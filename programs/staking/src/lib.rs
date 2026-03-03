@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 use anchor_spl::token_2022;
 use anchor_spl::token_interface::{Mint, TokenAccount, TokenInterface};
 
-declare_id!("Stak1ng11111111111111111111111111111111111");
+declare_id!("Stak1ng1111111111111111111111111111111111111");
 
 /// AEGIS Staking Program
 /// 
@@ -184,11 +184,12 @@ fn update_rewards(
     if pool.total_staked > 0 {
         // Calculate rewards per token based on vault balance
         // We use 1e18 precision for reward_per_token to avoid precision loss
-        let available_rewards = rewards_vault.amount;
+        let available_rewards = rewards_vault.amount as u128;
+        let total_staked = pool.total_staked as u128;
         let new_reward_per_token = available_rewards
-            .checked_mul(1_000_000_000_000_000_000) // 1e18 precision
+            .checked_mul(1_000_000_000_000_000_000u128) // 1e18 precision
             .unwrap()
-            .checked_div(pool.total_staked)
+            .checked_div(total_staked)
             .unwrap_or(0);
         
         pool.reward_per_token_stored = new_reward_per_token;
@@ -196,11 +197,13 @@ fn update_rewards(
     
     // Calculate user's pending rewards
     if stake_account.staked_amount > 0 {
-        let pending = stake_account.staked_amount
-            .checked_mul(pool.reward_per_token_stored.saturating_sub(stake_account.reward_per_token_paid))
+        let staked = stake_account.staked_amount as u128;
+        let reward_delta = pool.reward_per_token_stored.saturating_sub(stake_account.reward_per_token_paid);
+        let pending = staked
+            .checked_mul(reward_delta)
             .unwrap()
-            .checked_div(1_000_000_000_000_000_000) // Remove 1e18 precision
-            .unwrap_or(0);
+            .checked_div(1_000_000_000_000_000_000u128) // Remove 1e18 precision
+            .unwrap_or(0) as u64;
         
         stake_account.unclaimed_rewards = stake_account.unclaimed_rewards.checked_add(pending).unwrap();
     }
