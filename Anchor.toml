@@ -1,18 +1,16 @@
-[toolchain]
-
 [features]
 seeds = false
 skip-lint = false
 
 [programs.localnet]
-aegis = "9VsHdFGG2eT5gkXs7v1q5bWcwRCiGqhcZHN1NpgCcNWq"
-fee_distributor = "FeeD1str1butr111111111111111111111111111111"
-staking = "Stak1ng11111111111111111111111111111111111"
+aegis = "E9eCCUEZ5g41ddKGN9Coju43QzKJuEG4FEm32j1sTwNG"
+fee_distributor = "7mLJQemwoCQztdtRXshEY7poKNKJN98m39foqvK3DnCg"
+staking = "Dcrq8mcCkPVSRBc41hx9ZyDmbzbz2uT5rMLuaQrnqCE5"
 
 [programs.devnet]
-aegis = "9VsHdFGG2eT5gkXs7v1q5bWcwRCiGqhcZHN1NpgCcNWq"
-fee_distributor = "FeeD1str1butr111111111111111111111111111111"
-staking = "Stak1ng11111111111111111111111111111111111"
+aegis = "E9eCCUEZ5g41ddKGN9Coju43QzKJuEG4FEm32j1sTwNG"
+fee_distributor = "7mLJQemwoCQztdtRXshEY7poKNKJN98m39foqvK3DnCg"
+staking = "Dcrq8mcCkPVSRBc41hx9ZyDmbzbz2uT5rMLuaQrnqCE5"
 
 [registry]
 url = "https://api.apr.dev"
