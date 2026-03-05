@@ -2,13 +2,13 @@ import { Connection, PublicKey, Commitment } from "@solana/web3.js";
 import { AnchorProvider, Program, Idl, BN } from "@coral-xyz/anchor";
 import { AnchorWallet } from "@solana/wallet-adapter-react";
 
-// Network configuration
-export const NETWORK = "devnet";
+// Network configuration - TESTNET
+export const NETWORK = process.env.NEXT_PUBLIC_NETWORK || "testnet";
 export const RPC_URL =
-  process.env.NEXT_PUBLIC_RPC_URL || "https://api.devnet.solana.com";
+  process.env.NEXT_PUBLIC_RPC_URL || "https://api.testnet.solana.com";
 
 // ========================================
-// DEPLOYED PROGRAM IDs (Devnet)
+// DEPLOYED PROGRAM IDs (Testnet)
 // ========================================
 
 // Core AEGIS token program
@@ -21,15 +21,14 @@ export const FEE_DISTRIBUTOR_PROGRAM_ID = new PublicKey(
   "BrjsCzt26mJEmSXaQmQxud3r1EfRcs5neJ3JH75U2Tzx"
 );
 
-// Staking program (PENDING DEPLOYMENT - needs ~0.25 more SOL)
-// Seed phrase saved: panther clerk lounge library sign legend history wheat enhance hole miss glow
+// Staking program - DEPLOYED TO TESTNET
 export const STAKING_PROGRAM_ID = new PublicKey(
-  "11111111111111111111111111111111" // Placeholder until deployed
+  "AgAQSxNVkSCFzmtkk5iZ5Wn16Sfj1sY4XqX5nnRxZqad"
 );
 
 // Token mint - will be created after initialization
 export const AEGIS_MINT = new PublicKey(
-  "11111111111111111111111111111111" // Placeholder until token created
+  "BUdnYqg7ReN3YPMysGGz6i6qLYftj5YAKnnJMsRNB9do" // Testnet AEGIS Token (Token-2022 with 2% fee)
 );
 
 // Fee authority wallet
@@ -41,7 +40,7 @@ export const FEE_AUTHORITY = new PublicKey(
 export const DEPLOYMENT_STATUS = {
   aegis: { deployed: true, programId: "F2dTW59to7C3zqFuTVa2LZWSnhJfixBse2ytimQeU4Kd" },
   feeDistributor: { deployed: true, programId: "BrjsCzt26mJEmSXaQmQxud3r1EfRcs5neJ3JH75U2Tzx" },
-  staking: { deployed: false, programId: null, note: "Awaiting ~0.25 SOL for deployment" },
+  staking: { deployed: true, programId: "AgAQSxNVkSCFzmtkk5iZ5Wn16Sfj1sY4XqX5nnRxZqad" },
 };
 
 // ========================================

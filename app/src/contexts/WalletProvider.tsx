@@ -14,9 +14,9 @@ interface Props {
 }
 
 export const WalletProvider: FC<Props> = ({ children }) => {
-  // Use devnet by default, can be changed via env var
+  // Use testnet, configurable via env var
   const endpoint = useMemo(() => 
-    process.env.NEXT_PUBLIC_RPC_URL || clusterApiUrl('devnet'), 
+    process.env.NEXT_PUBLIC_RPC_URL || clusterApiUrl('testnet'), 
     []
   );
 
