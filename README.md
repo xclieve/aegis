@@ -68,6 +68,16 @@ See [docs/architecture.md](docs/architecture.md) for full technical details.
 | 6. Frontend Scaffold | ✅ Complete |
 | 7. Integration & Testing | 🔄 In Progress |
 
+### Testnet Deployment Status
+
+- ✅ AEGIS program deployed
+- ✅ Fee Distributor deployed
+- ✅ Staking program deployed
+- ✅ Token mint created (Token-2022 with 2% transfer fee)
+- ✅ Frontend integrated with testnet contracts
+- ⏳ Staking pool initialization pending
+- ⏳ End-to-end testing pending
+
 ---
 
 ## Project Structure
@@ -89,22 +99,25 @@ aegis/
 
 ## Smart Contracts
 
-### Program IDs (Devnet)
+### Program IDs (Testnet)
 
 | Program | Address |
 |---------|---------|
-| AEGIS | `E9eCCUEZ5g41ddKGN9Coju43QzKJuEG4FEm32j1sTwNG` |
-| Fee Distributor | `7mLJQemwoCQztdtRXshEY7poKNKJN98m39foqvK3DnCg` |
-| Staking | `Dcrq8mcCkPVSRBc41hx9ZyDmbzbz2uT5rMLuaQrnqCE5` |
+| AEGIS | `F2dTW59to7C3zqFuTVa2LZWSnhJfixBse2ytimQeU4Kd` |
+| Fee Distributor | `BrjsCzt26mJEmSXaQmQxud3r1EfRcs5neJ3JH75U2Tzx` |
+| Staking | `AgAQSxNVkSCFzmtkk5iZ5Wn16Sfj1sY4XqX5nnRxZqad` |
+
+> **Note:** Devnet deployment abandoned due to persistent rate-limiting. Testnet is the active network.
 
 ### Token Configuration
 
 | Parameter | Value |
 |-----------|-------|
-| Mint | `81uLJNUkmSw64MJjdUX2TWY9RHcbBDNWCc2V14dkmQHW` |
+| Mint | `BUdnYqg7ReN3YPMysGGz6i6qLYftj5YAKnnJMsRNB9do` |
 | Decimals | 9 |
 | Transfer Fee | 200 basis points (2%) |
 | Token Program | TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb (Token-2022) |
+| Network | Testnet (`https://api.testnet.solana.com`) |
 
 ---
 
