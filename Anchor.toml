@@ -12,6 +12,11 @@ aegis = "E9eCCUEZ5g41ddKGN9Coju43QzKJuEG4FEm32j1sTwNG"
 fee_distributor = "7mLJQemwoCQztdtRXshEY7poKNKJN98m39foqvK3DnCg"
 staking = "Dcrq8mcCkPVSRBc41hx9ZyDmbzbz2uT5rMLuaQrnqCE5"
 
+[programs.testnet]
+aegis = "F2dTW59to7C3zqFuTVa2LZWSnhJfixBse2ytimQeU4Kd"
+fee_distributor = "BrjsCzt26mJEmSXaQmQxud3r1EfRcs5neJ3JH75U2Tzx"
+staking = "AgAQSxNVkSCFzmtkk5iZ5Wn16Sfj1sY4XqX5nnRxZqad"
+
 [registry]
 url = "https://api.apr.dev"
 
