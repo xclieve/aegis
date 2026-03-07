@@ -48,22 +48,30 @@ const AEGIS_MINT = new PublicKey("BUdnYqg7ReN3YPMysGGz6i6qLYftj5YAKnnJMsRNB9do")
 const STAKING_IDL = {
   version: "0.1.0",
   name: "staking",
+  address: "AgAQSxNVkSCFzmtkk5iZ5Wn16Sfj1sY4XqX5nnRxZqad",
+  metadata: {
+    name: "staking",
+    version: "0.1.0",
+    spec: "0.1.0"
+  },
   instructions: [
     {
       name: "initialize",
+      discriminator: [175, 175, 109, 31, 13, 152, 155, 237],
       accounts: [
-        { name: "authority", isMut: true, isSigner: true },
-        { name: "mint", isMut: false, isSigner: false },
-        { name: "pool", isMut: true, isSigner: false },
-        { name: "stakeVault", isMut: false, isSigner: false },
-        { name: "rewardsVault", isMut: false, isSigner: false },
-        { name: "systemProgram", isMut: false, isSigner: false },
+        { name: "authority", writable: true, signer: true },
+        { name: "mint", writable: false, signer: false },
+        { name: "pool", writable: true, signer: false },
+        { name: "stakeVault", writable: false, signer: false },
+        { name: "rewardsVault", writable: false, signer: false },
+        { name: "systemProgram", writable: false, signer: false, address: "11111111111111111111111111111111" },
       ],
       args: [{ name: "bump", type: "u8" }],
     },
   ],
   accounts: [],
   errors: [],
+  types: [],
 };
 
 // ============================================================================
@@ -336,8 +344,8 @@ async function main() {
     { commitment: "confirmed" }
   );
   
-  // Create program interface
-  const program = new anchor.Program(STAKING_IDL as any, STAKING_PROGRAM_ID, provider);
+  // Create program interface (Anchor 0.30+ API)
+  const program = new anchor.Program(STAKING_IDL as any, provider);
   
   try {
     const sig3 = await program.methods
