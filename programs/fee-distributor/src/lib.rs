@@ -5,7 +5,7 @@ use anchor_spl::token_interface::{
     withdraw_withheld_tokens_from_mint, WithdrawWithheldTokensFromMint,
 };
 
-declare_id!("7mLJQemwoCQztdtRXshEY7poKNKJN98m39foqvK3DnCg");
+declare_id!("BrjsCzt26mJEmSXaQmQxud3r1EfRcs5neJ3JH75U2Tzx");
 
 /// AEGIS Fee Distributor Program
 /// 
